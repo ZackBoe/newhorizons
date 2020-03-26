@@ -1,0 +1,33 @@
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Temporary folders
+tmp/
+temp/
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### dotenv ###
+.env
+
+## built site ###
+dist
+
+### snowpack modules ###
+src/assets/modules/
+!src/assets/modules/.gitkeep
+
+### downloaded images ###
+src/assets/images/diary/
+!src/assets/images/diary/.gitkeep

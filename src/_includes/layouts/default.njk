@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-us" class="no-js">
+<head>
+  <title>
+      {%- if title -%}
+          Zack's New Horizons {{ title }}
+      {%- else -%}
+          Zack's New Horizons
+      {%- endif -%}
+  </title>
+  <meta name="robots" content="index,follow">
+  <meta name="generator" content="Eleventy">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  <link href="/assets/modules/normalize.css/normalize.css" rel="stylesheet" />
+  <link href="/assets/css/styles.css" rel="stylesheet" />
+
+
+  <link href="/assets/modules/simple-jscalendar/source/jsCalendar.min.css" rel="stylesheet" />
+  {{ css | safe if css }}
+
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body class="{{ bodyClass }}">
+
+  <main>
+  {% block content %}
+  {% endblock content %}
+  </main>
+
+  <script type="text/javascript" src="/assets/modules/simple-jscalendar/source/jsCalendar.min.js"></script>
+  {{ js | safe if js }}
+</body>
+</html>

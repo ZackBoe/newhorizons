@@ -1,0 +1,38 @@
+{
+  "name": "acnh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run snowpack && npm run eleventy:build",
+    "dev": "eleventy --serve --watch",
+    "snowpack": "snowpack",
+    "eleventy:build": "ELEVENTY_ENV=prod eleventy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "eleventy-plugin-local-images": "^0.3.0",
+    "node-fetch": "^2.6.0",
+    "slugify": "^1.4.0",
+    "snowpack": "^1.6.0"
+  },
+  "dependencies": {
+    "dayjs": "^1.8.23",
+    "normalize.css": "^8.0.1",
+    "simple-jscalendar": "^1.4.4"
+  },
+  "snowpack": {
+    "installOptions": {
+      "dest": "./src/assets/modules"
+    },
+    "webDependencies": [
+      "normalize.css/normalize.css",
+      "simple-jscalendar/source/jsCalendar.min.js",
+      "simple-jscalendar/source/jsCalendar.min.css"
+    ]
+  }
+}

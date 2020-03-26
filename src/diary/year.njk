@@ -1,0 +1,33 @@
+---
+pagination:
+  data: collections.entriesByYear
+  size: 1
+  alias: 'year'
+permalink: '/diary/{{year}}.html'
+---
+
+{% extends 'layouts/default.njk' %}
+
+{% set title = 'Diary' %}
+{% set bodyClass = "" %}
+
+{% block content %}
+  {{year}}
+
+ 
+  {% for month in collections.entriesByYear[year] | keys %}
+    {{month}}
+    {% for entry in collections.entriesByYear[year][month] %}
+      <a href="{{entry.url }}">{{entry.data.entry.date.day}}</a>
+    {% endfor %}
+
+  {% endfor %}
+
+
+{% endblock %}
+
+{% set js %}
+<script>
+
+</script>
+{% endset %}

@@ -1,0 +1,145 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: url('/assets/images/animalcrossing-pattern-leaves-white.jpg')
+}
+
+.diaryEntry main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100vh;
+  align-items: center;
+  justify-items: center; 
+  position: relative;
+}
+
+.diary-link {
+  cursor: zoom-in;
+  margin-bottom: 350px;
+}
+
+.diary-img {
+  width: 100%;
+  max-width: 1280px;
+}
+
+.calendar {
+  bottom: 50px;
+  position: absolute;
+}
+
+
+.calendar.jsCalendar .jsCalendar-title-name {
+  width: calc(100% - 75px);
+}
+
+.calendar.jsCalendar tbody td {
+  opacity: 0.4;
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+}
+
+.calendar.jsCalendar tbody td:after {
+  /* content: ''; */
+  position: absolute;
+  left: 3px;
+  top: 16px;
+  width: 30px;
+  height: 2px;
+  background: red;
+  transform: rotate(-45deg);
+}
+
+.calendar.jsCalendar tbody td.jsCalendar-previous,
+.calendar.jsCalendar tbody td.jsCalendar-next {
+  color: white;
+}
+
+.calendar.jsCalendar tbody td.jsCalendar-selected,
+.calendar.jsCalendar tbody td.jsCalendar-current.jsCalendar-selected {
+  border: initial;
+  height: 36px;
+  width: 36px;
+  line-height: 36px;
+  opacity: 1;
+  color: black;
+}
+
+.calendar.jsCalendar tbody td.jsCalendar-selected:after,
+.calendar.jsCalendar tbody td.jsCalendar-previous:after, 
+.calendar.jsCalendar tbody td.jsCalendar-next:after {
+  display: none;
+}
+
+.calendar.jsCalendar tbody td:hover {
+  background-color: initial;
+}
+.calendar.jsCalendar tbody td.jsCalendar-current:hover {
+  background: #52c9ff;
+  color: #fff;
+}
+
+.calendar.jsCalendar tbody td.jsCalendar-selected:hover,
+.calendar.jsCalendar tbody td.jsCalendar-current.jsCalendar-selected:hover  {
+  color: black;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+.calendar .pika-single {
+  border: 0;
+}
+
+.pika-single .pika-lendar {
+  width: auto;
+}
+
+.pika-single .pika-label {
+  font-size: 1.3rem;
+}
+
+.pika-single .pika-table thead th {
+  font-size: 1rem;
+}
+
+.pika-single .is-disabled .pika-button {
+  background: transparent;
+}
+
+.pika-button.pika-day {
+  color: #999;
+  font-size: 1.2rem;
+  padding: 15px;
+}
+
+.pika-button.pika-day:hover {
+  background: #f5f5f5;
+  color: #999;
+  cursor: default;
+  border-radius: 0;
+}
+
+.is-today .pika-button.pika-day:hover {
+  color: #3af;
+}
+
+.has-event .pika-button.pika-day {
+  border-radius: 0;
+  background: #f5f5f5;
+  box-shadow: initial;
+  color: black;
+}
+
+.has-event .pika-button.pika-day:hover {
+  cursor: pointer;
+  border-radius: 0;
+  background: #005da9;
+  color: white;
+}

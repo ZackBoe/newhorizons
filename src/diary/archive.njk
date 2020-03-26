@@ -1,0 +1,21 @@
+---
+permalink: '/diary/archive.html'
+---
+{% extends 'layouts/default.njk' %}
+
+{% set title = 'Diary Archive' %}
+
+{% block content %}
+{# {{ collections.entriesByMonth | keys | log}} #}
+{# {{ collections.entriesByYear | keys | log}} #}
+{% for month in collections.entriesByMonth | keys %}
+  {{ month }}
+
+  {# {{ collections.entriesByMonth[month]| log }} #}
+
+  {% for entry in collections.entriesByMonth[month] %}
+    <a href="{{entry.url }}">{{entry.data.entry.date.day}}</a>
+  {% endfor %}
+{% endfor %}
+
+{% endblock %}

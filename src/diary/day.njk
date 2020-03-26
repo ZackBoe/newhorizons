@@ -1,0 +1,27 @@
+---
+tag: diary
+pagination:
+  data: diary
+  size: 1
+  alias: 'entry'
+  addAllPagesToCollections: true
+permalink: '/diary/{{entry.date.year}}/{{entry.date.month}}/{{entry.date.day}}.html'
+---
+
+{% extends 'layouts/default.njk' %}
+
+{% set title = 'Diary' %}
+{% set bodyClass = "diaryEntry" %}
+
+{% block content %}
+<a class="diary-link" href="{{ entry.image }}"><img class="diary-img" src="{{ entry.image }}" /></a>
+
+<div class="calendar"></div>
+
+{% endblock %}
+
+{% set js %}
+<script>
+
+</script>
+{% endset %}

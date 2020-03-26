@@ -1,0 +1,35 @@
+{% extends 'layouts/default.njk' %}
+
+{% set title = 'Diary' %}
+{% set bodyClass = "diaryEntry" %}
+
+{% block content %}
+{# {{ diary | dump | safe }} #}
+{# {{ collections.entriesByMonth | log }}
+{{ collections.entriesByYear | log }} #}
+
+
+<a class="diary-link" href="{{ diary | lastImage }}"><img class="diary-img" src="{{ diary | lastImage }}" /></a>
+
+<div class="calendar"></div>
+
+{% endblock %}
+
+{% set js %}
+<script>
+
+console.log('hello')
+const cal = jsCalendar.new(".calendar", "now", { "monthFormat": "month YYYY" });
+cal.select({{ diary | calendarDates | dump | safe }})
+cal.onDateClick((e, calDate) => {
+  if(!e.target.classList.contains('jsCalendar-selected')) return
+  console.log(e, calDate)
+  const day = `0${calDate.getDate()}`.slice(-2)
+  const month = `0${calDate.getMonth()+1}`.slice(-2)
+  const imgURL = `assets/images/diary/${calDate.getFullYear()}-${month}-${day}.jpg`
+  document.querySelector('.diary-img').src = imgURL
+  document.querySelector('.diary-link').href= imgURL
+})
+
+</script>
+{% endset %}
