@@ -25,9 +25,9 @@ temp/
 dist
 
 ### snowpack modules ###
-src/assets/modules/
+src/assets/modules/**
 !src/assets/modules/.gitkeep
 
 ### downloaded images ###
-src/assets/images/diary/
+src/assets/images/diary/**
 !src/assets/images/diary/.gitkeep
