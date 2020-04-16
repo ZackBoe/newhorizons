@@ -9,7 +9,7 @@ module.exports = async function() {
 
   // return [{emoji: '🌎',name: 'Earth Day?',date: '📣 Starts in 6 days 📅 Apr 22',outcome: '🤷‍♂️ No known recipes or rewards',link: 'https://www.notion.so/Earth-Day-51292eb73a364390a3bc0053aac27c01'},{emoji: '🎍',name: 'Young Spring Bamboo',date: '⏳ 45 days left 📅 Mar 01 → May 31',outcome: '🧾 9/10 Recipes 🛠 3 Crafted',link: 'https://www.notion.so/Young-Spring-Bamboo-a6f1fb1a244a4825afb2173e18168e88'}]
 
-  console.info('Launching headless Firefox')
+  console.info('Launching headless browser')
   const browser = await firefox.launch()
 
   try {
@@ -20,7 +20,6 @@ module.exports = async function() {
     await page.goto('https://www.notion.so/7df84d49a6944e7b8eb2a9957a746575')
     await page.waitForSelector(selector)
     await page.waitFor(1000);
-    await page.screenshot({ path: 'what.png'})
     let events = await page.$$eval(selector, elements => [...elements].map((event) => {
       return {
         text: event.innerText,
