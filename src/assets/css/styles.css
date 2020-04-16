@@ -9,30 +9,131 @@ body {
   background: url('/assets/images/animalcrossing-pattern-leaves-white.jpg')
 }
 
-.diaryEntry main {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100vh;
-  align-items: center;
-  justify-items: center; 
+svg {
+  width: 32px;
+  height: 32px;
+}
+
+main {
+
+}
+
+section {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.diary-link {
+section h1 {
+  width: 100%;
+  text-align: center;
+}
+
+section h1, section h2 {
+  font-family: 'Zilla Slab', serif;
+  font-weight: normal;
+}
+
+section.diary .calendar {
+  display: none;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+}
+
+section.diary .calendar.visible { display: block; }
+
+section.diary .calendar table {
+  margin: 0 auto;
+}
+
+nav.diary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav.diary-actions button {
+  display: flex;
+  align-items: center;
+  margin: 1em;
+  padding: 5px;
+  min-width: 150px;
+  color: white;
+  border: 5px solid transparent;
+  border-radius: 20px;
+  background: #007d75;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  nav.diary-actions button {
+    order: 2;
+    margin: 5px;
+  }
+  nav.diary-actions button[data-action="previous"] { order: 0; }
+  nav.diary-actions button[data-action="next"] { order: 1; }
+}
+
+nav.diary-actions button span {
+  margin: 0 10px;
+  font-family: 'Zilla Slab', serif;
+}
+
+nav.diary-actions button[data-action="next"] {
+  flex-direction: row-reverse;
+}
+
+nav.diary-actions button:hover {
+  border: 5px solid #f1e26f;
+}
+
+nav.diary-actions button:hover svg {
+  transform: scale(110%)
+}
+
+section.diary .diary-link {
+  display: flex;
+  justify-content: center;
   cursor: zoom-in;
-  margin-bottom: 350px;
 }
 
-.diary-img {
+section.diary .diary-img {
   width: 100%;
   max-width: 1280px;
 }
 
-.calendar {
-  bottom: 50px;
-  position: absolute;
+section.events {
+  margin-top: 30px;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
+section.events .event {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 375px;
+  border-radius: 3px;
+  box-shadow: #0f0f0f1a 0px 0px 0px 1px, #0f0f0f1a 0px 2px 4px;
+  background: white;
+  color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  transition: background 120ms ease-in 0s;
+}
+
+section.events .event:hover {
+  background: #f8f8f8;
+}
+
+section.events h2, section.events p {
+  margin: 0;
+  padding: 5px 0;
+}
 
 .calendar.jsCalendar .jsCalendar-title-name {
   width: calc(100% - 75px);

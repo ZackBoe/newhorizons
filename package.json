@@ -15,15 +15,13 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
-    "eleventy-plugin-local-images": "^0.3.0",
     "fast-glob": "^3.2.2",
-    "node-fetch": "^2.6.0",
-    "slugify": "^1.4.0",
     "snowpack": "^1.6.0"
   },
   "dependencies": {
     "dayjs": "^1.8.23",
     "normalize.css": "^8.0.1",
+    "playwright": "^0.13.0",
     "simple-jscalendar": "^1.4.4"
   },
   "snowpack": {

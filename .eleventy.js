@@ -7,6 +7,15 @@ module.exports = function(config) {
   config.addPassthroughCopy('src/assets');
   config.setUseGitIgnore(false);
 
+  config.setBrowserSyncConfig({
+    server: {
+      baseDir: "./dist",
+      serveStaticOptions: {
+          extensions: ['html']
+      }
+  }
+  })
+
   config.addFilter('lastImage', (entries) => {
     entries.sort((a, b) => (dayjs(a.date.full).isAfter(dayjs(b.date.full)) ? 1 : -1))
     return entries[entries.length-1].image

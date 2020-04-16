@@ -16,6 +16,10 @@ permalink: '/diary/{{entry.date.year}}/{{entry.date.month}}/{{entry.date.day}}.h
 {% block content %}
 <a class="diary-link" href="{{ entry.image }}"><img class="diary-img" src="{{ entry.image }}" /></a>
 
+<a href="{{ pagination.href.previous }}">previous</a>
+<a href="{{ pagination.href.next }}">next</a>
+
+
 <div class="calendar"></div>
 
 {% endblock %}
