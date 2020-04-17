@@ -17,6 +17,7 @@
     "@11ty/eleventy": "^0.10.0",
     "fast-glob": "^3.2.2",
     "playwright-aws-lambda": "^0.4.0",
+    "playwright-chromium": "^0.13.0",
     "playwright-core": "^0.13.0",
     "snowpack": "^1.6.0"
   },

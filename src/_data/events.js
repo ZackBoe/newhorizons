@@ -1,6 +1,7 @@
 const dayjs = require('dayjs')
 const customParseFormat = require('dayjs/plugin/customParseFormat')
-const { firefox } = require('playwright')
+const playwright = require('playwright-aws-lambda');
+const chromium = require('playwright-chromium');
 dayjs.extend(customParseFormat)
 
 const selector = '.notion-gallery-view [data-block-id="7df84d49-a694-4e7b-8eb2-a9957a746575"] .notion-collection-item'
@@ -9,13 +10,15 @@ module.exports = async function() {
 
   // return [{emoji: '🌎',name: 'Earth Day?',date: '📣 Starts in 6 days 📅 Apr 22',outcome: '🤷‍♂️ No known recipes or rewards',link: 'https://www.notion.so/Earth-Day-51292eb73a364390a3bc0053aac27c01'},{emoji: '🎍',name: 'Young Spring Bamboo',date: '⏳ 45 days left 📅 Mar 01 → May 31',outcome: '🧾 9/10 Recipes 🛠 3 Crafted',link: 'https://www.notion.so/Young-Spring-Bamboo-a6f1fb1a244a4825afb2173e18168e88'}]
 
-  console.info('Launching headless browser')
-  const browser = await firefox.launch()
+  console.info('Launching headless browser from ', chromium.chromium._executablePath)
+  let browser = null
 
   try {
-    const context = await browser.newContext({
-      userAgent: '@ZackBoehm · pls give api · microsoft/playwright'
-    })
+    browser = await playwright.launchChromium({
+      headless: true,
+      executablePath: chromium.chromium._executablePath
+    });
+    const context = await browser._defaultContext;
     const page = await context.newPage()
     await page.goto('https://www.notion.so/7df84d49a6944e7b8eb2a9957a746575')
     await page.waitForSelector(selector)
