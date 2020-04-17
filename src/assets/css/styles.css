@@ -22,6 +22,10 @@ section {
   position: relative;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 section h1 {
@@ -107,8 +111,6 @@ section.diary .diary-img {
 section.events {
   margin-top: 30px;
   flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 section.events .event {
