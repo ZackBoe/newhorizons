@@ -1,5 +1,6 @@
 const fs = require('fs')
-const glob = require('fast-glob')
+const imagemin = require('imagemin')
+const imageminMozjpeg = require('imagemin-mozjpeg')
 const dayjs = require('dayjs')
 const customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
@@ -10,11 +11,12 @@ module.exports = async function() {
 
   let diary = []
 
-  const images = await glob(['**/images_diary/*-02CB906EA538A35643C1E1484C4B947D.jpg'])
+  const files = await imagemin(['images_diary/*-02CB906EA538A35643C1E1484C4B947D.jpg'], 
+  { plugins: [imageminMozjpeg({ quality: 80 })] })
 
-  images.forEach(image => {
-    let date = dayjs(/images_diary\/(\d*)-/.exec(image)[1], 'YYYYMMDDHHmmssSS')
-    fs.copyFile(image, `src/assets/images/diary/${dayjs(date).format('YYYY-MM-DD')}.jpg`, (err) =>{
+  files.forEach(image => {
+    let date = dayjs(/images_diary\/(\d*)-/.exec(image.sourcePath)[1], 'YYYYMMDDHHmmssSS')
+    fs.writeFile(`src/assets/images/diary/${dayjs(date).format('YYYY-MM-DD')}.jpg`, image.data, (err) =>{
       if (err) throw err;
     })
 

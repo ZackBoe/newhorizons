@@ -15,7 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
-    "fast-glob": "^3.2.2",
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^8.0.0",
     "playwright-aws-lambda": "^0.4.0",
     "playwright-chromium": "^0.13.0",
     "playwright-core": "^0.13.0",
