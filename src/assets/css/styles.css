@@ -57,7 +57,7 @@ nav.diary-actions {
   justify-content: center;
 }
 
-nav.diary-actions button {
+nav.diary-actions a {
   display: flex;
   align-items: center;
   margin: 1em;
@@ -68,32 +68,33 @@ nav.diary-actions button {
   border-radius: 20px;
   background: #007d75;
   font-size: 1.5rem;
+  text-decoration: none;;
   cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
-  nav.diary-actions button {
+  nav.diary-actions a {
     order: 2;
     margin: 5px;
   }
-  nav.diary-actions button[data-action="previous"] { order: 0; }
-  nav.diary-actions button[data-action="next"] { order: 1; }
+  nav.diary-actions a[data-action="previous"] { order: 0; }
+  nav.diary-actions a[data-action="next"] { order: 1; }
 }
 
-nav.diary-actions button span {
+nav.diary-actions a span {
   margin: 0 10px;
   font-family: 'Zilla Slab', serif;
 }
 
-nav.diary-actions button[data-action="next"] {
+nav.diary-actions a[data-action="next"] {
   flex-direction: row-reverse;
 }
 
-nav.diary-actions button:hover {
+nav.diary-actions a:hover {
   border: 5px solid #f1e26f;
 }
 
-nav.diary-actions button:hover svg {
+nav.diary-actions a:hover svg {
   transform: scale(110%)
 }
 

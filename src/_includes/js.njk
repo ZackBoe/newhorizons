@@ -1,0 +1,60 @@
+<script>
+
+const diary = {{ diary | dump | safe}}
+
+document.querySelector('a[data-action="previous"]').addEventListener('click', e => {
+  e.preventDefault()
+  let image = document.querySelector('.diary-img')
+  let currentIndex = parseInt(image.dataset.index)
+  if(!currentIndex) currentIndex = diary.findIndex(entry => entry.date.full === image.src.split('diary/')[1].split('.jpg')[0])
+  let index = currentIndex - 1
+  if(index === -1) index = diary.length - 1;
+  console.log(diary[index])
+  changeImg(diary[index].image, index, diary[index].date)
+})
+
+document.querySelector('a[data-action="next"]').addEventListener('click', e => {
+  e.preventDefault()
+  let image = document.querySelector('.diary-img')
+  let currentIndex = parseInt(image.dataset.index)
+  if(!currentIndex) currentIndex = diary.findIndex(entry => entry.date.full === image.src.split('diary/')[1].split('.jpg')[0])
+  let index = currentIndex + 1
+  if(index === diary.length) index = 0;
+  changeImg(diary[index].image, index, diary[index].date)
+})
+
+document.querySelector('a[data-action="latest"]').addEventListener('click', e => {
+  e.preventDefault()
+  changeImg(diary[diary.length - 1].image, diary.length - 1, diary[diary.length - 1].date)
+})
+
+document.querySelector('a[data-action="calendar"]').addEventListener('click', e => {
+  e.preventDefault()
+  document.querySelector('section.diary .calendar').classList.toggle('visible')
+})
+
+const cal = jsCalendar.new(".calendar", "now", { "monthFormat": "month YYYY" });
+cal.select({{ diary | calendarDates | dump | safe }})
+cal.onDateClick((e, calDate) => {
+  if(!e.target.classList.contains('jsCalendar-selected')) return
+  console.log(e, calDate)
+  const year = calDate.getFullYear()
+  const day = `0${calDate.getDate()}`.slice(-2)
+  const month = `0${calDate.getMonth()+1}`.slice(-2)
+  const imgURL = `/assets/images/diary/${calDate.getFullYear()}-${month}-${day}.jpg`
+  document.querySelector('section.diary .calendar').classList.remove('visible')
+  changeImg(imgURL, null, date = {year: year, month: month, day: day})
+})
+
+function changeImg(imgURL, index = "", date) {
+  const datePath = `/diary/${date.year}/${date.month}/${date.day}`
+  document.querySelector('.diary-img').src = imgURL
+  document.querySelector('.diary-img').dataset.index = index
+  document.querySelector('.diary-link').href = imgURL
+  // Ideally replace these with appropriate new links
+  document.querySelector('a[data-action="previous"]').removeAttribute('href')
+  document.querySelector('a[data-action="next"]').removeAttribute('href')
+  if(date) history.pushState(null, null, datePath)
+}
+
+</script>

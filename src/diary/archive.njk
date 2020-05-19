@@ -8,8 +8,9 @@ permalink: '/diary/archive.html'
 {% block content %}
 {# {{ collections.entriesByMonth | keys | log}} #}
 {# {{ collections.entriesByYear | keys | log}} #}
+<small>//TODO: Make this pretty 😀</small>
 {% for month in collections.entriesByMonth | keys %}
-  {{ month }}
+  <h2>{{ month }}</h2>
 
   {# {{ collections.entriesByMonth[month]| log }} #}
 

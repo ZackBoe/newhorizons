@@ -1,0 +1,10 @@
+<section class="events">
+<h1>📆 Events</h1>
+{% for event in events %}
+  <a href="{{event.link}}" class="event">
+    <h2>{{event.emoji}} {{event.name}}</h2>
+    <p>{{event.date}}</p>
+    <p>{{event.outcome}}</p>
+  </a>
+{% endfor %}
+</section>
