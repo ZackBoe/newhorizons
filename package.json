@@ -25,6 +25,8 @@
   "dependencies": {
     "dayjs": "^1.8.23",
     "globby": "^11.0.1",
+    "netlify-plugin-cache": "^1.0.3",
+    "netlify-plugin-debug-cache": "^1.0.3",
     "normalize.css": "^8.0.1",
     "simple-jscalendar": "^1.4.4"
   },
