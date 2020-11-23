@@ -23,6 +23,7 @@
     "dayjs": "^1.8.23",
     "globby": "^11.0.1",
     "netlify-plugin-cache": "^1.0.3",
+    "netlify-plugin-chromium": "^1.1.4",
     "normalize.css": "^8.0.1",
     "playwright-chromium": "^1.6.2",
     "simple-jscalendar": "^1.4.4"
