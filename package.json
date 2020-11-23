@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "dayjs": "^1.8.23",
+    "globby": "^11.0.1",
     "normalize.css": "^8.0.1",
     "simple-jscalendar": "^1.4.4"
   },
@@ -31,7 +32,7 @@
     "installOptions": {
       "dest": "./src/assets/modules"
     },
-    "webDependencies": [
+    "install": [
       "normalize.css/normalize.css",
       "simple-jscalendar/source/jsCalendar.min.js",
       "simple-jscalendar/source/jsCalendar.min.css"

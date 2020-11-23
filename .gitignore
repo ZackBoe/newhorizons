@@ -32,3 +32,6 @@ src/assets/modules/**
 ### downloaded images ###
 src/assets/images/diary/**
 !src/assets/images/diary/.gitkeep
+
+### local Netlify folder ###
+.netlify

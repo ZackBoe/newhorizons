@@ -1,0 +1,3 @@
+
+[[plugins]]
+package = "./src/netlify-cache"
