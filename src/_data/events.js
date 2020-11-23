@@ -29,10 +29,8 @@ module.exports = async function() {
 
     if(typeof events === 'object' && events.length > 0) {
       events = events.map(event => {
-        console.log(event.text)
         text = event.text.split(/\n/)
         text.shift()
-        console.log(text)
         return {
           emoji: event.emoji,
           name: text[0],
