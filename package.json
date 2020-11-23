@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run snowpack && npm run eleventy:build",
+    "build": "npm run node_assets && npm run eleventy:build",
     "dev": "eleventy --serve --watch",
-    "snowpack": "snowpack",
+    "node_assets": "cp node_modules/normalize.css/normalize.css src/assets/modules/ && cp node_modules/simple-jscalendar/source/jsCalendar.min.css src/assets/modules/ && cp node_modules/simple-jscalendar/source/jsCalendar.min.js src/assets/modules/",
     "eleventy:build": "ELEVENTY_ENV=prod eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,8 +19,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "playwright-aws-lambda": "^0.4.0",
     "playwright-chromium": "^0.13.0",
-    "playwright-core": "^0.13.0",
-    "snowpack": "^1.6.0"
+    "playwright-core": "^0.13.0"
   },
   "dependencies": {
     "dayjs": "^1.8.23",
@@ -29,15 +28,5 @@
     "netlify-plugin-debug-cache": "^1.0.3",
     "normalize.css": "^8.0.1",
     "simple-jscalendar": "^1.4.4"
-  },
-  "snowpack": {
-    "installOptions": {
-      "dest": "./src/assets/modules"
-    },
-    "install": [
-      "normalize.css/normalize.css",
-      "simple-jscalendar/source/jsCalendar.min.js",
-      "simple-jscalendar/source/jsCalendar.min.css"
-    ]
   }
 }
