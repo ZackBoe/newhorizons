@@ -16,16 +16,15 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
     "imagemin": "^7.0.1",
-    "imagemin-mozjpeg": "^8.0.0",
-    "playwright-aws-lambda": "^0.6.0",
-    "playwright-chromium": "^0.13.0",
-    "playwright-core": "^0.13.0"
+    "imagemin-mozjpeg": "^8.0.0"
   },
   "dependencies": {
+    "chromium": "^3.0.2",
     "dayjs": "^1.8.23",
     "globby": "^11.0.1",
     "netlify-plugin-cache": "^1.0.3",
     "normalize.css": "^8.0.1",
+    "playwright-chromium": "^1.6.2",
     "simple-jscalendar": "^1.4.4"
   }
 }
