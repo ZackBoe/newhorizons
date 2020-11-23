@@ -30,7 +30,7 @@ module.exports = async function() {
   console.log(`🧮 Total: ${cached.length + newImgs.length}, Cached: ${cached.length}, New: ${newImgs.length}`)
 
   if(newImgs.length > 0) {
-    console.log(`🗜️  Compressing ${newImgs.length} images...`)
+    console.log(`🗜️ Compressing ${newImgs.length} images...`)
     const compressed = await imagemin(newImgs, { plugins: [imageminMozjpeg({ quality: 80 })] })
 
     compressed.forEach(image => {
