@@ -1,11 +1,4 @@
-
-# [[plugins]]
-# package = "./src/netlify-cache"
-
 [[plugins]]
 package = "netlify-plugin-cache"
   [plugins.inputs]
   paths = ["src/assets/images/diary"]
-
-[[plugins]]
-package = "netlify-plugin-debug-cache"
