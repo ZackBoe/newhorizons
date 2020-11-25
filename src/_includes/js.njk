@@ -28,22 +28,17 @@ document.querySelector('a[data-action="latest"]').addEventListener('click', e =>
   changeImg(diary[diary.length - 1].image, diary.length - 1, diary[diary.length - 1].date)
 })
 
-document.querySelector('a[data-action="calendar"]').addEventListener('click', e => {
-  e.preventDefault()
-  document.querySelector('section.diary .calendar').classList.toggle('visible')
-})
+document.querySelector('a[data-action="calendar"]').remove()
 
-const cal = jsCalendar.new(".calendar", "now", { "monthFormat": "month YYYY" });
-cal.select({{ diary | calendarDates | dump | safe }})
-cal.onDateClick((e, calDate) => {
-  if(!e.target.classList.contains('jsCalendar-selected')) return
-  console.log(e, calDate)
-  const year = calDate.getFullYear()
-  const day = `0${calDate.getDate()}`.slice(-2)
-  const month = `0${calDate.getMonth()+1}`.slice(-2)
-  const imgURL = `/assets/images/diary/${calDate.getFullYear()}-${month}-${day}.jpg`
-  document.querySelector('section.diary .calendar').classList.remove('visible')
-  changeImg(imgURL, null, date = {year: year, month: month, day: day})
+document.addEventListener('duetChange', (event) =>{
+  const date = event.detail
+  const imgURL = `/assets/images/diary/${date.value}.jpg`
+  changeImg(imgURL, null, {
+    full: date.value,
+    year: date.valueAsDate.getFullYear(),
+    month: `0${date.valueAsDate.getMonth()+1}`.slice(-2),
+    day: `0${date.valueAsDate.getDate()}`.slice(-2)
+  })
 })
 
 function changeImg(imgURL, index = "", date) {
@@ -51,6 +46,7 @@ function changeImg(imgURL, index = "", date) {
   document.querySelector('.diary-img').src = imgURL
   document.querySelector('.diary-img').dataset.index = index
   document.querySelector('.diary-link').href = imgURL
+  document.querySelector('.duet-date__input').value = date.full
   // Ideally replace these with appropriate new links
   document.querySelector('a[data-action="previous"]').removeAttribute('href')
   document.querySelector('a[data-action="next"]').removeAttribute('href')

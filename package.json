@@ -6,7 +6,10 @@
   "scripts": {
     "build": "npm run node_assets && npm run eleventy:build",
     "dev": "eleventy --serve --watch",
-    "node_assets": "cp node_modules/normalize.css/normalize.css src/assets/modules/ && cp node_modules/simple-jscalendar/source/jsCalendar.min.css src/assets/modules/ && cp node_modules/simple-jscalendar/source/jsCalendar.min.js src/assets/modules/",
+    "copy:date-picker": "cp -r node_modules/@duetds/date-picker/dist/duet src/assets/modules/duet",
+    "copy:normalize": "cp node_modules/normalize.css/normalize.css src/assets/modules/",
+    "copy:all": "npm run copy:date-picker && npm run copy:normalize",
+    "node_assets": " cp node_modules/simple-jscalendar/source/jsCalendar.min.css src/assets/modules/ && cp node_modules/simple-jscalendar/source/jsCalendar.min.js src/assets/modules/",
     "eleventy:build": "ELEVENTY_ENV=prod eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,13 +22,13 @@
     "imagemin-mozjpeg": "^8.0.0"
   },
   "dependencies": {
+    "@duetds/date-picker": "^1.1.0",
     "chromium": "^3.0.2",
     "dayjs": "^1.8.23",
     "globby": "^11.0.1",
     "netlify-plugin-cache": "^1.0.3",
     "netlify-plugin-chromium": "^1.1.4",
     "normalize.css": "^8.0.1",
-    "playwright-chromium": "^1.6.2",
-    "simple-jscalendar": "^1.4.4"
+    "playwright-chromium": "^1.6.2"
   }
 }
