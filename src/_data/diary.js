@@ -49,6 +49,10 @@ module.exports = async function() {
     })
   }
 
+  diary = diary.sort((a,b) => {
+    return new Date(b.date.full) - new Date(a.date.full)
+  })
+  diary.reverse()
   return diary
 }
 
