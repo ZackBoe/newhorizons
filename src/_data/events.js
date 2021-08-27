@@ -6,6 +6,9 @@ const notion = new Client({
 
 // How can I reuse this or the Netlify function instead of duplicating this code?
 
+// Yay Notion Functions/AWS Lambda only support node 14 and I can't use string.replaceAll() yaayy
+let yearRegex = new RegExp(`, ${(new Date).getFullYear()}`, 'gmi')
+
 module.exports = async function() {
   
   // return [{emoji: '🌎',name: 'Earth Day?',date: '📣 Starts in 6 days 📅 Apr 22',outcome: '🤷‍♂️ No known recipes or rewards',link: 'https://www.notion.so/Earth-Day-51292eb73a364390a3bc0053aac27c01'},{emoji: '🎍',name: 'Young Spring Bamboo',date: '⏳ 45 days left 📅 Mar 01 → May 31',outcome: '🧾 9/10 Recipes 🛠 3 Crafted',link: 'https://www.notion.so/Young-Spring-Bamboo-a6f1fb1a244a4825afb2173e18168e88'}]
@@ -33,7 +36,7 @@ module.exports = async function() {
     events.push({
       emoji: event?.icon?.emoji || '❓',
       name: event.properties["Name"].title[0].plain_text,
-      date: event.properties["Event Dates"].formula.string.replaceAll(`, ${(new Date).getFullYear()}`, ''),
+      date: event.properties["Event Dates"].formula.string.replace(yearRegex, ''),
       outcome: event.properties["Rewards, Recipes & Crafted"].formula.string,
       link: event.url
     })

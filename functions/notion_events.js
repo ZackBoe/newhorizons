@@ -5,6 +5,9 @@ const notion = new Client({
   auth: process.env.NOTION_TOKEN
 })
 
+// Yay Notion Functions/AWS Lambda only support node 14 and I can't use string.replaceAll() yaayy
+let yearRegex = new RegExp(`, ${(new Date).getFullYear()}`, 'gmi')
+
 async function getEvents(event, context) {
   
   const response = await notion.databases.query({
@@ -30,7 +33,7 @@ async function getEvents(event, context) {
     events.push({
       emoji: event?.icon?.emoji,
       name: event.properties["Name"].title[0].plain_text,
-      date: event.properties["Event Dates"].formula.string.replaceAll(`, ${(new Date).getFullYear()}`, ''),
+      date: event.properties["Event Dates"].formula.string.replace(yearRegex, ''),
       outcome: event.properties["Rewards, Recipes & Crafted"].formula.string,
       link: event.url
     })
