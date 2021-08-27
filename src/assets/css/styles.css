@@ -146,7 +146,7 @@ section.events .event {
   margin: 10px;
   padding: 10px;
   width: 100%;
-  max-width: 375px;
+  max-width: 400px;
   border-radius: 3px;
   box-shadow: #0f0f0f1a 0px 0px 0px 1px, #0f0f0f1a 0px 2px 4px;
   background: white;

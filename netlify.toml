@@ -1,9 +1,7 @@
+[functions]
+  directory = "functions"
+
 [[plugins]]
 package = "netlify-plugin-cache"
   [plugins.inputs]
   paths = ["src/assets/images/diary"]
-
-[[plugins]]
-package = "netlify-plugin-chromium"
-  [plugins.inputs]
-  packageManager = "npm"

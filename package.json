@@ -16,18 +16,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy": "^0.12.1",
+    "@netlify/functions": "^0.7.2",
+    "@notionhq/client": "^0.3.1",
     "imagemin": "^7.0.1",
     "imagemin-mozjpeg": "^8.0.0"
   },
   "dependencies": {
     "@duetds/date-picker": "^1.1.0",
-    "chromium": "^3.0.2",
     "dayjs": "^1.8.23",
     "globby": "^11.0.1",
     "netlify-plugin-cache": "^1.0.3",
-    "netlify-plugin-chromium": "^1.1.4",
-    "normalize.css": "^8.0.1",
-    "playwright-chromium": "^1.6.2"
+    "normalize.css": "^8.0.1"
   }
 }

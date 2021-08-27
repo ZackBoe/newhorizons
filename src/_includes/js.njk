@@ -53,4 +53,17 @@ function changeImg(imgURL, index = "", date) {
   if(date) history.pushState(null, null, datePath)
 }
 
+updateEvents()
+
+function updateEvents() {
+  fetch(`${document.location.origin}/.netlify/functions/notion_events/${new Date().setUTCHours(0,0,0,0)}`)
+    .then(response => response.json())
+    .then(response => {
+      console.log('got new events from notion!', response)
+      events = response.map(event => `<a class="event" href="${event.link}"><h2>${event.emoji} ${event.name}</h2><p>${event.date}</p><p>${event.outcome}</p></a>`).join('')
+      document.querySelector('section.events').innerHTML = `<h1>📆 Events</h1>${events}`
+    })
+
+}
+
 </script>

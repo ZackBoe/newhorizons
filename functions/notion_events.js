@@ -1,14 +1,11 @@
+const { builder } = require("@netlify/functions")
 const { Client } = require("@notionhq/client")
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN
 })
 
-// How can I reuse this or the Netlify function instead of duplicating this code?
-
-module.exports = async function() {
-  
-  // return [{emoji: '🌎',name: 'Earth Day?',date: '📣 Starts in 6 days 📅 Apr 22',outcome: '🤷‍♂️ No known recipes or rewards',link: 'https://www.notion.so/Earth-Day-51292eb73a364390a3bc0053aac27c01'},{emoji: '🎍',name: 'Young Spring Bamboo',date: '⏳ 45 days left 📅 Mar 01 → May 31',outcome: '🧾 9/10 Recipes 🛠 3 Crafted',link: 'https://www.notion.so/Young-Spring-Bamboo-a6f1fb1a244a4825afb2173e18168e88'}]
+async function getEvents(event, context) {
   
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASEID,
@@ -31,7 +28,7 @@ module.exports = async function() {
   
   response.results.forEach(event => {
     events.push({
-      emoji: event?.icon?.emoji || '❓',
+      emoji: event?.icon?.emoji,
       name: event.properties["Name"].title[0].plain_text,
       date: event.properties["Event Dates"].formula.string.replaceAll(`, ${(new Date).getFullYear()}`, ''),
       outcome: event.properties["Rewards, Recipes & Crafted"].formula.string,
@@ -39,8 +36,14 @@ module.exports = async function() {
     })
   })
   
-  console.log(`📅 Got ${events.length} events from Notion:`)
-  console.log(events.map(event => `${event.emoji} ${event.name} - ${event.date}`))
-  return events
+  
+  console.log(events)
+  return {
+    statusCode: 200,
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify(events)
+  }
   
 }
+
+exports.handler = builder(getEvents)
