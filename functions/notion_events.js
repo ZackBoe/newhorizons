@@ -40,7 +40,7 @@ async function getEvents(event, context) {
   console.log(events)
   return {
     statusCode: 200,
-    headers: { "Content-Type": "application/json", 'Access-Control-Allow-Origin': '*'},
+    headers: { "Content-Type": "application/json"},
     body: JSON.stringify(events)
   }
   
