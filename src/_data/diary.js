@@ -1,7 +1,5 @@
-const fs = require('fs')
 const glob = require('globby')
-const imagemin = require('imagemin')
-const imageminMozjpeg = require('imagemin-mozjpeg')
+const sharp = require('sharp')
 const dayjs = require('dayjs')
 const customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
@@ -31,15 +29,16 @@ module.exports = async function() {
 
   if(newImgs.length > 0) {
     console.log(`🗜️ Compressing ${newImgs.length} images...`)
-    const compressed = await imagemin(newImgs, { plugins: [imageminMozjpeg({ quality: 80 })] })
-
-    compressed.forEach(image => {
-      let date = dayjs(/images_diary\/(\d*)-/.exec(image.sourcePath)[1], 'YYYYMMDDHHmmssSS')
-      fs.writeFile(`src/assets/images/diary/${dayjs(date).format('YYYY-MM-DD')}.jpg`, image.data, (err) =>{
+    newImgs.forEach( async (img) => {
+      let date = dayjs(/images_diary\/(\d*)-/.exec(img)[1], 'YYYYMMDDHHmmssSS')
+      sharp(img)
+      .jpeg({ mozjpeg: true, quality: 80, force: true })
+      .toFile(`src/assets/images/diary/${dayjs(date).format('YYYY-MM-DD')}.jpg`, (err, info) => {
         if (err) throw err;
         pushImage(date)
-      })
+      });
     })
+
   } else console.log('🚨 No new images!')
 
   if(cached.length > 0) {

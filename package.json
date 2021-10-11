@@ -19,11 +19,11 @@
     "@11ty/eleventy": "^0.12.1",
     "@netlify/functions": "^0.7.2",
     "@notionhq/client": "^0.3.1",
-    "imagemin": "^7.0.1",
-    "imagemin-mozjpeg": "^8.0.0"
+    "sharp": "^0.29.1"
   },
   "dependencies": {
     "@duetds/date-picker": "^1.1.0",
+    "@squoosh/lib": "^0.4.0",
     "dayjs": "^1.8.23",
     "globby": "^11.0.1",
     "netlify-plugin-cache": "^1.0.3",
